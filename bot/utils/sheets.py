@@ -23,6 +23,11 @@ def _get_spreadsheet() -> gspread.Spreadsheet:
     """スプレッドシートへの接続を返す（シングルトン）"""
     global _client, _spreadsheet
     if _spreadsheet is None:
+        if not config.SHEETS_ENABLED:
+            raise RuntimeError(
+                "Google Sheets が設定されていません。"
+                ".env に GOOGLE_SHEETS_ID を設定してください。"
+            )
         creds = Credentials.from_service_account_file(
             config.GOOGLE_SERVICE_ACCOUNT_JSON, scopes=SCOPES
         )

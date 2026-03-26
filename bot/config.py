@@ -9,16 +9,17 @@ load_dotenv()
 # ── Discord ──────────────────────────────────────
 DISCORD_TOKEN: str = os.environ["DISCORD_TOKEN"]
 
-# ── Google Sheets ─────────────────────────────────
-GOOGLE_SHEETS_ID: str = os.environ["GOOGLE_SHEETS_ID"]
+# ── Google Sheets（オプション：未設定ならポイント機能は無効）────
+GOOGLE_SHEETS_ID: str | None = os.getenv("GOOGLE_SHEETS_ID")
 GOOGLE_SERVICE_ACCOUNT_JSON: str = os.getenv(
     "GOOGLE_SERVICE_ACCOUNT_JSON", "./credentials.json"
 )
+SHEETS_ENABLED: bool = GOOGLE_SHEETS_ID is not None
 
-# ── チャンネル ID ─────────────────────────────────
-CHANNEL_RANKING: int = int(os.environ["CHANNEL_RANKING"])
-CHANNEL_REWARD_APPLY: int = int(os.environ["CHANNEL_REWARD_APPLY"])
-CHANNEL_MOD_LOG: int = int(os.environ["CHANNEL_MOD_LOG"])
+# ── チャンネル ID（0 = 未設定）─────────────────────
+CHANNEL_RANKING: int = int(os.getenv("CHANNEL_RANKING", "0"))
+CHANNEL_REWARD_APPLY: int = int(os.getenv("CHANNEL_REWARD_APPLY", "0"))
+CHANNEL_MOD_LOG: int = int(os.getenv("CHANNEL_MOD_LOG", "0"))
 
 # サポートフォーラムチャンネル ID リスト（カンマ区切りで複数指定可）
 _support_ids = os.getenv("SUPPORT_FORUM_CHANNEL_IDS", "")
@@ -26,12 +27,12 @@ SUPPORT_FORUM_CHANNEL_IDS: list[int] = [
     int(x.strip()) for x in _support_ids.split(",") if x.strip()
 ]
 
-# ── ロール ID ─────────────────────────────────────
-ROLE_HELPER: int = int(os.environ["ROLE_HELPER"])
-ROLE_SUPPORTER: int = int(os.environ["ROLE_SUPPORTER"])
-ROLE_EXPERT: int = int(os.environ["ROLE_EXPERT"])
-ROLE_AMBASSADOR: int = int(os.environ["ROLE_AMBASSADOR"])
-ROLE_STAFF: int = int(os.environ["ROLE_STAFF"])
+# ── ロール ID（0 = 未設定）─────────────────────────
+ROLE_HELPER: int = int(os.getenv("ROLE_HELPER", "0"))
+ROLE_SUPPORTER: int = int(os.getenv("ROLE_SUPPORTER", "0"))
+ROLE_EXPERT: int = int(os.getenv("ROLE_EXPERT", "0"))
+ROLE_AMBASSADOR: int = int(os.getenv("ROLE_AMBASSADOR", "0"))
+ROLE_STAFF: int = int(os.getenv("ROLE_STAFF", "0"))
 
 # ── ポイントルール（config シートで上書き可能、初期値）─────
 POINTS_SOLVED: int = 20

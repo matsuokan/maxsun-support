@@ -230,6 +230,7 @@ Bot の詳細仕様は [`bot_spec.md`](bot_spec.md) を参照。
 - **Ticket システム**: 高度なサポートを個別スレッドで対応
 - **外部 Webhook 連携**: GitHub Issues と Discord の双方向通知
 - **AI 自動回答 Bot**: FAQ をベースにした初期回答の自動化
+- **お知らせ投稿コマンド (`/announce`)**: 運営専用。ワークスペース（Obsidian等）で推敲した原稿を、Bot経由で指定チャンネルに公式投稿する機能
 
 ---
 

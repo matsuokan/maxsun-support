@@ -22,26 +22,28 @@
 
 ## 2. スラッシュコマンド一覧
 
-### ユーザー向けコマンド
+### 👥 一般ユーザー向けコマンド
 
-| コマンド | 引数 | 説明 | 実行可能チャンネル |
-|---|---|---|---|
-| `/solved` | なし | 自分のスレッドを解決済みにし、最終回答者に +20 pt 加算 | サポートスレッド内のみ |
-| `/mypoints` | なし | 自分の累計ポイント・ランク・次のランクまでの差分を表示（本人のみ見えるEphemeral） | 全チャンネル |
-| `/leaderboard` | なし | ポイント上位10名を表示（Ephemeral） | 全チャンネル |
-| `/reward-apply` | なし | 報酬申請フォームを表示（ランク条件を満たしている場合のみ） | `#受け取り申請` のみ |
-| `/faq` | `keyword` | キーワードで FAQ を検索して表示（Ephemeral） | 全チャンネル |
-
-### 運営向けコマンド（`👑 MAXSUN公式` ロールのみ）
-
-| コマンド | 引数 | 説明 |
+| コマンド | 定義ファイル | 説明 |
 |---|---|---|
-| `/add-points` | `@user` `amount` `reason` | 手動でポイントを加算（ノベルティ贈呈等のボーナス用） |
-| `/remove-points` | `@user` `amount` `reason` | ポイントをペナルティで減算（不正対策） |
-| `/set-rank` | `@user` `rank` | ランクを手動で設定 |
-| `/reward-complete` | `@user` | 報酬発送完了をマーク（Sheets に記録） |
-| `/post-ranking` | なし | 週次ランキングを即時投稿 |
-| `/userinfo` | `@user` | ユーザーのポイント・ランク・履歴を確認 |
+| `/solved` | `cogs/support.py` | 自分のスレッドを解決済みにし、最終回答者に +20 pt 加算 |
+| `/mypoints` | `cogs/info.py` | 自分の累計ポイント・ランク・次のランクまでの差分を表示 |
+| `/leaderboard` | `cogs/info.py` | ポイント上位10名を表示 |
+| `/reward-apply` | `cogs/rewards.py` | 報酬申請フォームを表示 |
+| `/faq` | `cogs/info.py` | キーワードで FAQ を検索して表示 |
+
+### 🛠️ 運営・開発用コマンド（`👑 MAXSUN公式` ロールのみ利用可能）
+
+| コマンド | 定義ファイル | 説明 | 備考 |
+|---|---|---|---|
+| `/add-points` | `cogs/admin.py` | 手動でポイントを加算（ノベルティ贈呈等のボーナス用） | |
+| `/remove-points` | `cogs/admin.py` | ポイントをペナルティで減算（不正対策） | |
+| `/userinfo` | `cogs/admin.py` | ユーザーのポイント・ランク・履歴を確認 | |
+| `/reward-complete` | `cogs/admin.py` | 報酬発送完了をマーク（Google Sheetsに記録） | |
+| `/post-ranking` | `cogs/admin.py` | 週次ランキングを即時投稿 | |
+| `/rank` | `cogs/ranks.py` | 指定ユーザーのランク情報を表示 | |
+| `/setup-channels` | `cogs/setup.py` | 【開発用】全チャンネルに案内文を一括投稿 | **※開発後削除予定** |
+| `/setup-channel` | `cogs/setup.py` | 【開発用】指定チャンネルに案内文を投稿 | **※開発後削除予定** |
 
 ---
 
