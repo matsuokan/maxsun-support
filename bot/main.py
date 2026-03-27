@@ -26,6 +26,7 @@ COGS = [
     "cogs.admin",
     "cogs.scheduler",
     "cogs.setup",
+    "cogs.knowledge",
 ]
 
 
